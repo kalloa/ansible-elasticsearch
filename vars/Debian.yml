@@ -1,4 +1,5 @@
 ---
 java: "openjdk-7-jre-headless"
+oracle_java: "oracle-java8-installer"
 default_file: "/etc/default/elasticsearch"
 es_home: "/usr/share/elasticsearch"
