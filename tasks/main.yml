@@ -1,4 +1,6 @@
 ---
+#- name: Debug, print all vars
+#  debug: msg="All variables {{ vars }}"
 - name: check-parameters
   include: checkParameters.yml
 - name: os-specific vars
