@@ -10,7 +10,7 @@
 # Modified by Nicolas Huray for Elasticsearch <nicolas.huray@gmail.com>.
 #
 ### BEGIN INIT INFO
-# Provides:          {{es_instance_name}}_{{default_file | basename}}
+# Provides:          {{default_file | basename}}_{{es_instance_name}}
 # Required-Start:    $network $remote_fs $named
 # Required-Stop:     $network $remote_fs $named
 # Default-Start:     2 3 4 5
@@ -20,7 +20,7 @@
 ### END INIT INFO
 
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
-NAME={{es_instance_name}}_{{default_file | basename}}
+NAME={{default_file | basename}}_{{es_instance_name}}
 {% if es_config['node.name'] is defined %}
 DESC="Elasticsearch Server - {{es_config['node.name']}}"
 {% else %}
