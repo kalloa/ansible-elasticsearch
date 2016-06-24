@@ -10,6 +10,11 @@
   yum: name={{ java }} state={{java_state}}
   when: ansible_os_family == 'RedHat'
   
+- name: Debian - Ensure Java is installed
+  apt: name={{ java }} state={{java_state}} update_cache=yes force=yes
+  when: (ansible_os_family == 'Debian' and
+        use_oracle_java is not defined)
+
 - name: Add Oracle java repository
   apt_repository: repo='ppa:webupd8team/java'
   when: (ansible_os_family == 'Debian' and
@@ -21,11 +26,6 @@
   when: (ansible_os_family == 'Debian' and
         use_oracle_java is defined and
         use_oracle_java)
-
-- name: Debian - Ensure Java is installed
-  apt: name={{ java }} state={{java_state}} update_cache=yes force=yes
-  when: (ansible_os_family == 'Debian' and
-        use_oracle_java is not defined)
 
 - name: Debian - Ensure Java is installed
   apt: name={{ item }} state={{java_state}} update_cache=yes force=yes
